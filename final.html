@@ -1,0 +1,1048 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>final</title>
+    <script src="https://kit.fontawesome.com/755c9eccf4.js" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+        }
+
+        button {
+            outline: none;
+        }
+
+            button:active {
+                background-color: darkorange;
+                color: wheat;
+            }
+
+            button:hover {
+                background-color: wheat;
+                color: darkorange;
+            }
+
+        /*遊戲區域*/
+        table tr, td {
+            border-color: peru;
+            border-style: solid;
+            border-width: 3px;
+            height: 150px;
+            width: 150px;
+        }
+
+        .map {
+            margin: 65px auto auto 50px;
+            position: absolute;
+            border-color: darkred;
+            border-width: 10px;
+            border-style: ridge;
+        }
+
+        /*button*/
+        .setting {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            height: 50px;
+            width: 100px;
+            color: wheat;
+            background-color: orange;
+            border-color: darkorange;
+            border-style: solid;
+            border-width: 5px;
+            border-radius: 100px;
+        }
+
+        .gamerulesbutton {
+            position: absolute;
+            top: 10px;
+            right: 125px;
+            height: 50px;
+            width: 175px;
+            color: wheat;
+            font-size: 30px;
+            background-color: orange;
+            border-color: darkorange;
+            border-style: solid;
+            border-width: 5px;
+            border-radius: 100px;
+        }
+
+        .storybutton {
+            position: absolute;
+            top: 10px;
+            right: 315px;
+            height: 50px;
+            width: 175px;
+            color: wheat;
+            font-size: 30px;
+            background-color: orange;
+            border-color: darkorange;
+            border-style: solid;
+            border-width: 5px;
+            border-radius: 100px;
+        }
+
+        /*遊戲規則*/
+        .gamerules {
+            width: 400px;
+            height: 600px;
+            top: 15%;
+            left: 37%;
+            color: wheat;
+            font-size: 30px;
+            background-color: orange;
+            border-color: chocolate;
+            border-style: solid;
+            border-width: 5px;
+            border-radius: 50px;
+            position: absolute;
+            z-index: 2;
+        }
+
+        .gamerulestext {
+            color: black;
+            position: absolute;
+            left: 20px;
+            right: 15px;
+            padding: 10px;
+        }
+
+        .close_gamerules {
+            top: -25px;
+            right: -25px;
+            float: right;
+            color: wheat;
+            font-size: 50px;
+            background-color: orange;
+            border-color: chocolate;
+            border-style: solid;
+            border-width: 5px;
+            border-radius: 100px;
+            position: relative;
+        }
+
+        /*中間表格*/
+        .innertable {
+            border: 0px;
+        }
+
+        .inner {
+            position: absolute;
+            height: 460px;
+            width: 1260px;
+            top: 28%;
+            left: 11%;
+        }
+
+            .inner .pointboard1 {
+                background-color: black;
+                width: 350px;
+                height: 300px;
+                position: absolute;
+                top: 17%;
+                left: 3%;
+                border-radius: 50px;
+                background-color: white;
+                border-color: orange;
+                border-style: solid;
+            }
+
+            .inner .pointboard2 {
+                background-color: black;
+                width: 350px;
+                height: 300px;
+                position: absolute;
+                top: 17%;
+                right: 3%;
+                border-radius: 50px;
+                background-color: white;
+                border-color: gray;
+                border-style: solid;
+            }
+
+        /*骰子*/
+        .dicediv {
+            background-color: snow;
+            border-color: wheat;
+            border-style: solid;
+            border-width: 5px;
+            border-radius: 300px;
+            position: absolute;
+            width: 450px;
+            height: 300px;
+            top: 37%;
+            left: 32%;
+            z-index: 2;
+        }
+
+            .dicediv:hover {
+                color: wheat;
+                border-color: peru;
+            }
+
+        #dice {
+            text-shadow: 10px;
+            color: orangered;
+            font-size: 200px;
+            margin: 10% 20% 10% 20%;
+        }
+
+        /*分數*/
+        .dicepoint {
+            width: 500px;
+            height: 300px;
+            top: 17%;
+            left: 30%;
+            color: wheat;
+            font-size: 30px;
+            background-color: white;
+            border-color: cornflowerblue;
+            border-style: solid;
+            border-width: 5px;
+            border-radius: 10px;
+            position: absolute;
+            z-index: 2;
+        }
+
+            .dicepoint .yes {
+                width: 150px;
+                height: 60px;
+                position: absolute;
+                margin-top: 45%;
+                margin-left: 35%;
+                color: white;
+                font-size: 25px;
+                background-color: cornflowerblue;
+                border-color: wheat;
+                border-style: dotted;
+                border-width: 2px;
+                border-radius: 10px;
+            }
+
+        .pointtext {
+            color: darkblue;
+            text-align: center;
+            margin: 20% auto;
+        }
+
+        /*玩家棋子*/
+        .player1 {
+            background-color: red;
+        }
+
+        .player2 {
+            background-color: blue;
+        }
+
+        .clear {
+            background-color: none;
+        }
+
+        /*命運*/
+        #fate {
+            background-color: darkorange;
+            border-color: yellow;
+            border-style: solid;
+            border-width: 5px;
+            border-radius: 10px;
+            position: absolute;
+            width: 600px;
+            height: 400px;
+            top: 31%;
+            left: 30%;
+            z-index: 2;
+        }
+
+            #fate .yes {
+                width: 150px;
+                height: 60px;
+                position: absolute;
+                margin-top: 50%;
+                margin-left: 38%;
+                color: white;
+                font-size: 25px;
+                background-color: chocolate;
+                border-color: white;
+                border-style: solid;
+                border-width: 2px;
+                border-radius: 10px;
+            }
+
+        /*機會*/
+        #chance {
+            background-color: cornflowerblue;
+            border-color: blueviolet;
+            border-style: solid;
+            border-width: 5px;
+            border-radius: 10px;
+            position: absolute;
+            width: 600px;
+            height: 400px;
+            top: 31%;
+            left: 30%;
+            z-index: 2;
+        }
+
+            #chance .yes {
+                width: 150px;
+                height: 60px;
+                position: absolute;
+                margin-top: 50%;
+                margin-left: 38%;
+                color: white;
+                font-size: 25px;
+                background-color: lightseagreen;
+                border-color: white;
+                border-style: solid;
+                border-width: 2px;
+                border-radius: 10px;
+            }
+
+            /*命運機會搖出的東西*/
+            #chance .res, #fate .res {
+                font-size: 60px;
+                color: black;
+                text-align: center;
+                margin: 10% auto;
+            }
+
+        /*商店*/
+        #store {
+            background-color: blue;
+            border-color: darkblue;
+            border-style: solid;
+            border-width: 5px;
+            border-radius: 10px;
+            position: absolute;
+            width: 800px;
+            height: 600px;
+            top: 20%;
+            left: 22%;
+            z-index: 2;
+        }
+
+            #store .close {
+                width: 150px;
+                height: 60px;
+                position: absolute;
+                margin-top: 65%;
+                margin-left: 40%;
+                color: white;
+                font-size: 25px;
+                background-color: chocolate;
+                border-color: white;
+                border-style: solid;
+                border-width: 2px;
+                border-radius: 10px;
+            }
+
+            #store .tool1 {
+                width: 200px;
+                height: 70px;
+                position: absolute;
+                margin-top: 50%;
+                margin-left: 8%;
+                color: gray;
+                font-size: 25px;
+                background-color: lightblue;
+                border-color: white;
+                border-style: solid;
+                border-width: 2px;
+                border-radius: 10px;
+            }
+
+            #store .tool2 {
+                width: 200px;
+                height: 70px;
+                position: absolute;
+                margin-top: 50%;
+                margin-left: 38%;
+                color: gray;
+                font-size: 25px;
+                background-color: lightblue;
+                border-color: white;
+                border-style: solid;
+                border-width: 2px;
+                border-radius: 10px;
+            }
+
+            #store .tool3 {
+                width: 200px;
+                height: 70px;
+                position: absolute;
+                margin-top: 50%;
+                margin-left: 68%;
+                color: gray;
+                font-size: 25px;
+                background-color: lightblue;
+                border-color: white;
+                border-style: solid;
+                border-width: 2px;
+                border-radius: 10px;
+            }
+
+         /*99*/
+        #times {
+            background-color: green;
+            border-color: saddlebrown;
+            border-style: solid;
+            border-width: 5px;
+            border-radius: 10px;
+            position: absolute;
+            width: 800px;
+            height: 600px;
+            top: 20%;
+            left: 23%;
+            z-index: 2;
+        }
+
+        /*抓球*/
+        #box {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: skyblue;
+            position: absolute;
+            left: 50%;
+            top: 30%;
+        }
+
+        #ballgame {
+            background-color: white;
+            border-color: navy;
+            border-style: solid;
+            border-width: 5px;
+            border-radius: 10px;
+            position: absolute;
+            width: 800px;
+            height: 600px;
+            top: 20%;
+            left: 20%;
+            z-index: 2;
+        }
+
+        #score {
+            background-color: green;
+            border-color: saddlebrown;
+            border-style: solid;
+            border-width: 5px;
+            border-radius: 10px;
+            position: absolute;
+            width: 800px;
+            height: 600px;
+            top: 20%;
+            left: 23%;
+            z-index: 2;
+        }
+
+    </style>
+    <script>
+        //控制介面開關
+        var musickey = 1;
+        var gameruleskey = 0;
+        var storytextkey = 0;
+
+        //紀錄表格動畫
+        var temp1 = 0;
+        var temp2 = 0;
+
+        var array = [];//table物件
+        var turn = 1;//現在是誰玩家幾的回合
+        var player1 = 0;//player1的位置
+        var player2 = 0;//player2的位置
+        var player1_p = 0;//player1的點數
+        var player2_p = 0;//player2的點數
+        var fatearr = ["+5", "+3", "+10", "-5", "-3", "-10"];//點數
+        var chancearr = ["+1", "+4"];//步
+        var answer;//99答案
+
+        function start() {
+            //聲音設定
+            var musicbutton = document.getElementById("setting");
+            musicbutton.addEventListener("click", volumnsetting, false);
+
+            //遊戲規則
+            var gamerulesbutton = document.getElementById("gamerulesbutton");
+            gamerulesbutton.addEventListener("click", gamerules, false);
+            var close_gamerules = document.getElementById("close_gamerules");
+            close_gamerules.addEventListener("click", gamerules, false);
+
+            //故事背景
+            var storybutton = document.getElementById("storybutton");
+            storybutton.addEventListener("click", story, false);
+            var close_storytext = document.getElementById("close_storytext");
+            close_storytext.addEventListener("click", story, false);
+
+            //骰點數
+            var dice = document.getElementById("dice");
+            dice.addEventListener("click", rolldice, false);
+            var yes = document.getElementById("yes");
+            yes.addEventListener("click", rolldiceclose, false);
+
+            //命運機會:確定
+            var fate_yes = document.getElementById("fate_yes");
+            fate_yes.addEventListener("click", fateclose, false);
+            var chance_yes = document.getElementById("chance_yes");
+            chance_yes.addEventListener("click", chanceclose, false);
+
+            //商店:關閉
+            var store_close = document.getElementById("store_close");
+            store_close.addEventListener("click", storeclose, false);
+
+            //綁定表格物件
+            var trArr = document.getElementById("tbody").children;
+            for (var i = 0; i < 5; i++) {
+                var tempArr = trArr[i].children;
+                for (var j = 0; j < 10; j++) {
+                    array[i * 10 + j] = tempArr[j];
+                    //console.log(array[i * 10 + j]);
+                }
+            }
+            setImage();
+        }
+
+
+        //關閉球球遊戲
+        function ballgameclose() {
+            document.getElementById("ballgame").hidden = true;
+        }
+
+        //球球遊戲
+        function ballgame() {
+            ballX = 0;
+            ballY = 0;
+            directX = 1;
+            directY = 1;
+            var i = setInterval("ballMove()", 20);
+            document.getElementById("ballgame").hidden = false;
+        }
+
+        //球移動
+        function ballMove() {
+            //小球移動
+            ballX += 2 * directX;
+            ballY += 2 * directY;
+            var div1 = document.getElementById("ballgame")
+            var div2 = document.getElementById("box");
+            //同時修改小球的top和width
+            div2.style.top = ballY + 'px';
+            div2.style.left = ballX + 'px';
+            //window.alert(div1.offsetWidth);
+            //判断轉向
+            //learInterval(i);
+            if (ballX + div2.offsetWidth >= div1.offsetWidth || ballX <= 0) {
+                directX = -directX;
+            }
+            if (ballY + div2.offsetHeight >= div1.offsetHeight || ballY <= 0) {
+                directY = -directY;
+            }
+            div2.addEventListener("click", ballgameclosescore, false);
+            setTimeout("ballgameclose()", 5000);
+        }
+
+        function ballgameclosescore() {
+            document.getElementById("ballgame").hidden = true;
+            document.getElementById("score").hidden = false;
+            if (turn == 2) player1_p += 5;
+            else player2_p += 5;
+            var p1ptext = document.getElementById("p1ptext");
+            var p2ptext = document.getElementById("p2ptext");
+            p1ptext.innerText = player1_p;
+            p2ptext.innerText = player2_p;
+            right = setTimeout(function () {
+                document.getElementById("score").hidden = true;
+            }, 1000);
+        }
+
+        //關閉商店
+        function storeclose() {
+            document.getElementById("store").hidden = true;
+        }
+
+        //關閉命運
+        function fateclose() {
+            document.getElementById("fate").hidden = true;
+        }
+
+        //關閉機會
+        function chanceclose() {
+            document.getElementById("chance").hidden = true;
+        }
+
+        //隨機命運
+        function randomfate() {
+            var val = Math.floor(Math.random() * 6);//0~5
+            console.log("fate=", fatearr[val] + "點數");
+            document.getElementById("fatetext").innerText = fatearr[val] + "點數";
+            if (turn == 1) player1_p += parseInt(fatearr[val]);
+            else player2_p += parseInt(fatearr[val]);
+            document.getElementById("fate").hidden = false;
+        }
+
+        //隨機機會
+        function randomchance() {
+            var val = Math.floor(Math.random() * 2);//0~1
+            console.log("chance=", chancearr[val] + "步");
+            document.getElementById("chancetext").innerText = chancearr[val] + "步";
+            if (turn == 1) player1 += parseInt(chancearr[val]);
+            else player2 += parseInt(chancearr[val]);
+            document.getElementById("chance").hidden = false;
+        }
+
+        //紀錄動畫和點數
+        function play(value) {
+            if (turn == 1) {
+                temp1 = player1;
+                player1 += value;
+            } else {
+                temp2 = player2;
+                player2 += value;
+            }
+        }
+
+        //檢測事件
+        function event() {
+            if (turn == 1 && player1 < 26) {
+                var val = array[index(player1)].innerText;//格子的值
+                console.log("player" + turn + "獲得了" + val);
+                if (parseInt(val) >= 0) {
+                    player1_p += parseInt(val);
+                } else if (player1 == 3 || player1 == 8 || player1 == 16) randomfate(); //命運
+                else if (player1 == 6 || player1 == 12 || player1 == 23) randomchance(); //機會
+                else if (player1 == 9 || player1 == 21) {//商店
+                    document.getElementById("store").hidden = false;
+                } else if (player1 == 5 || player1 == 19) {//99
+                    ninenine();
+                } else if (player1 == 11 || player1 == 25) {
+                    ballgame();
+                }
+            } else if (turn == 2 && player2 < 26) {
+                var val = array[index(player2)].innerText;//格子的值
+                console.log("player" + turn + "獲得了" + val);
+                if (parseInt(val) >= 0) {
+                    player2_p += parseInt(val);
+                } else if (player2 == 3 || player2 == 8 || player2 == 16) randomfate(); //命運
+                else if (player2 == 6 || player2 == 12 || player2 == 23) randomchance(); //機會
+                else if (player2 == 9 || player2 == 21) {//商店
+                    document.getElementById("store").hidden = false;
+                } else if (player2 == 5 || player2 == 19) {//99
+                    ninenine();          
+                } else if (player2 == 11 || player2 == 25) {
+                    ballgame();
+                }
+            }
+        }
+
+        //99隨機
+        function ninenine() {
+            var value1 = Math.floor(1 + Math.random() * 9);//1~9
+            var value2 = Math.floor(1 + Math.random() * 9);//1~9
+            answer = value1 * value2;
+            console.log(value1 + "x" + value2 + "=?");
+            document.getElementById("timestext").innerText = value1 + "x" + value2 + "=?";
+            setTimeout(function () { document.getElementById("times").hidden = false; document.getElementById("inputanswer").hidden = false; judge();}, 500);         
+        }
+
+        function judge() {
+            //時間到
+                wait = setTimeout(function () {
+                document.getElementById("times").hidden = true;
+            }, 3000);
+
+            //檢查答對
+            var check=setInterval(function () {
+                if (document.getElementById("inputanswer").value == answer) {
+                    document.getElementById("timestext").innerText = "你答對了！獲得5point！";
+                    if (turn == 2) player1_p += 5;
+                    else player2_p += 5;
+                    var p1ptext = document.getElementById("p1ptext");
+                    var p2ptext = document.getElementById("p2ptext");
+                    p1ptext.innerText = player1_p;
+                    p2ptext.innerText = player2_p;               
+                    //隱藏input
+                    document.getElementById("inputanswer").hidden = true;
+                    //過一秒關閉
+                    right = setTimeout(function () {
+                        document.getElementById("times").hidden = true;
+                    }, 1000);
+                    clearInterval(check);
+                }
+            }, 10);
+        }
+
+        //移動動畫
+        function move() {
+            var p1ptext = document.getElementById("p1ptext");
+            var p2ptext = document.getElementById("p2ptext");
+            if (turn == 1) {
+                var mv = setInterval(function () {
+                    if (temp1 > 24) {
+                        array[index(25)].setAttribute("class", "none");
+                        array[index(0)].setAttribute("class", "player1");
+                        window.alert("player1 獲勝！恭喜獲得魔法O_<~");
+                        clearInterval(mv);
+                    }
+                    if (temp1 == player1 - 1) {
+                        //交換ptext背景顏色
+                        document.getElementById("p2text").style.backgroundColor = "orange";
+                        document.getElementById("p2").style.borderColor = "orange";
+                        document.getElementById("p1text").style.backgroundColor = "gray";
+                        document.getElementById("p1").style.borderColor = "gray";
+                        p1ptext.innerText = player1_p;
+                        clearInterval(mv);
+                        clearInterval(mv);
+                    }
+                    array[index(player2)].setAttribute("class", "player2");
+                    if (index(player2) != index(temp1)) array[index(temp1)].setAttribute("class", "none");
+                    array[index(temp1 + 1)].setAttribute("class", "player1");
+                    temp1++;
+                }, 300);
+            } else {
+                var mv = setInterval(function () {
+                    if (temp2 > 24) {
+                        array[index(25)].setAttribute("class", "none");
+                        array[index(0)].setAttribute("class", "player2");
+                        window.alert("player2 獲勝！恭喜獲得魔法O_<~");
+                        clearInterval(mv);
+                    }
+                    if (temp2 == player2 - 1) {
+                        document.getElementById("p1text").style.backgroundColor = "orange";
+                        document.getElementById("p1").style.borderColor = "orange";
+                        document.getElementById("p2text").style.backgroundColor = "gray";
+                        document.getElementById("p2").style.borderColor = "gray";
+                        p2ptext.innerText = player2_p;
+                        clearInterval(mv);
+                    }
+                    array[index(player1)].setAttribute("class", "player1");
+                    if (index(player1) != index(temp2)) array[index(temp2)].setAttribute("class", "none");
+                    array[index(temp2 + 1)].setAttribute("class", "player2");
+                    temp2++;
+                }, 300);
+            }
+        }
+
+        //轉換index
+        function index(i) {
+            if (i >= 0 && i <= 9) return i;
+            else if (i == 10) return 19;
+            else if (i == 11) return 29;
+            else if (i == 12) return 39;
+            else if (i == 13) return 49;
+            else if (i == 14) return 48;
+            else if (i == 15) return 47;
+            else if (i == 16) return 46;
+            else if (i == 17) return 45;
+            else if (i == 18) return 44;
+            else if (i == 19) return 43;
+            else if (i == 20) return 42;
+            else if (i == 21) return 41;
+            else if (i == 22) return 40;
+            else if (i == 23) return 30;
+            else if (i == 24) return 20;
+            else if (i == 25) return 10;
+        }
+
+        //中間表格CSS設置
+        function setImage() {
+            //11~18.31~38
+            for (var i = 1; i < 4; i++) {
+                for (var j = 1; j < 9; j++) {
+                    array[i * 10 + j].className = "innertable";
+                }
+            }
+        }
+
+        //骰骰子
+        function rolldice() {
+            var value = Math.floor(1 + Math.random() * 6);
+            var pointtext = document.getElementById("pointtext");
+            var dicepoint = document.getElementById("dicepoint");
+            if (turn == 1) pointtext.innerHTML = "player1擲出了" + value + "！";
+            else pointtext.innerHTML = "player2擲出了" + value + "！";
+            dicepoint.hidden = false;
+            play(value);
+        }
+
+        //骰子確定
+        function rolldiceclose() {
+            var dicepoint = document.getElementById("dicepoint");
+            dicepoint.hidden = true;
+            move();
+
+            event();
+            if (turn == 1) turn = 2;
+            else turn = 1;
+        }
+
+        //故事背景
+        function story() {
+            var storytext = document.getElementById("storytext");
+            if (storytextkey == 0) {
+                storytext.hidden = false;
+                storytextkey = 1;
+            } else {
+                storytext.hidden = true;
+                storytextkey = 0;
+            }
+        }
+
+        //遊戲規則
+        function gamerules() {
+            var gamerules = document.getElementById("gamerules");
+            if (gameruleskey == 0) {
+                gamerules.hidden = false;
+                gameruleskey = 1;
+            } else {
+                gamerules.hidden = true;
+                gameruleskey = 0;
+            }
+        }
+
+        //音量設置
+        function volumnsetting() {
+            var backgroundmusic = document.getElementById("backgroundmusic");
+            var musicicon = document.getElementById("musicicon");
+            if (musickey == 0) {
+                backgroundmusic.play();
+                musicicon.className = "fas fa-volume-up fa-3x";
+                musickey = 1;
+            } else {
+                backgroundmusic.pause();
+                musicicon.className = "fas fa-volume-mute fa-3x";
+                musickey = 0;
+            }
+        }
+
+        window.addEventListener("load", start, false);
+    </script>
+</head>
+
+<body>
+    <!--右上角按鈕-->
+    <div>
+        <button class="storybutton" id="storybutton">故事背景</button>
+        <button class="gamerulesbutton" id="gamerulesbutton">遊戲規則</button>
+        <button class="setting" id="setting"><i class="fas fa-volume-up fa-3x" id="musicicon"></i></button>
+    </div>
+
+    <!--遊戲格子-->
+    <div class="map">
+        <table>
+            <tbody id="tbody">
+                <tr>
+                    <td style="font-weight: bold; color: red;font-size: 45px;" align="center">
+                        起/終點
+                        <br>
+                        <i class="fas fa-long-arrow-alt-right" style="font-size: 110px;"></i>
+                    </td>
+                    <td style="font-size: 60px;color: forestgreen;" align="center">+5</td>
+                    <td style="font-size: 60px;color: forestgreen;" align="center">+10</td>
+                    <td style="color: orange;font-size: 60px;" align="center">
+                        <i class="fas fa-exclamation"></i>
+                        <br>命運
+                    </td>
+                    <td style="font-size: 60px;color: forestgreen;" align="center">+12</td>
+                    <td></td>
+                    <td style="color:plum;font-size: 60px;" align="center">
+                        <i class="fas fa-question"></i>
+                        <br>機會
+                    </td>
+                    <td style="font-size: 60px;color: forestgreen;" align="center">+2</td>
+                    <td style="color: orange;font-size: 60px;" align="center">
+                        <i class="fas fa-exclamation"></i>
+                        <br>命運
+                    </td>
+                    <td style="font-size: 45px;color: navy;" align="center">
+                        <i class="fas fa-store"
+                           style="font-size: 80px;"></i>
+                        <br>商店
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td style="font-size: 60px;color: forestgreen;" align="center">+1</td>
+                </tr>
+                <tr>
+                    <td style="font-size: 60px;color: forestgreen;" align="center">+3</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td style="color:plum;font-size: 60px;" align="center">
+                        <i class="fas fa-question"></i>
+                        <br>機會
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td style="color:plum;font-size: 60px;" align="center">
+                        <i class="fas fa-question"></i>
+                        <br>機會
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-size: 60px;color: forestgreen;" align="center">+4</td>
+                    <td style="font-size: 45px;color: navy;" align="center">
+                        <i class="fas fa-store"
+                           style="font-size: 80px;"></i>
+                        <br>商店
+                    </td>
+                    <td style="font-size: 60px;color: forestgreen;" align="center">+6</td>
+                    <td></td>
+                    <td style="font-size: 60px;color: forestgreen;" align="center">+9</td>
+                    <td style="font-size: 60px;color: forestgreen;" align="center">+16</td>
+                    <td style="color: orange;font-size: 60px;" align="center">
+                        <i class="fas fa-exclamation"></i>
+                        <br>命運
+                    </td>
+                    <td style="font-size: 60px;color: forestgreen;" align="center">+4</td>
+                    <td></td>
+                    <td style="font-size: 60px;color: forestgreen;" align="center">+8</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!--遊戲規則介面-->
+    <div id="gamerules" class="gamerules" hidden>
+        <button class="close_gamerules" id="close_gamerules"><i class="far fa-times-circle"></i></button>
+        <p class="gamerulestext" align="center">《遊戲規則》</p>
+        <br />
+        <br />
+        <br />
+        <ul class="gamerulestext" style="font-size:smaller">
+            兩位玩家輪流擲骰子，踩到以下方格觸發方格事件。
+            (每擲一次骰子，最多觸發一次事件)
+            <li>點數:該名玩家獲得此格點數，點數可用於商店購買道具</li>
+            <li>機會:隨機抽取一張機會牌即觸發卡牌功能</li>
+            <li>命運:隨機抽取一張命運牌即觸發卡牌功能</li>
+            <li>商店:可用點數購買道具增強實力</li>
+
+
+        </ul>
+    </div>
+
+    <!--中間骰子按鈕-->
+    <button class="dicediv" id="setting"> <i class="fas fa-dice" id="dice"></i></button>
+
+    <!--中間區域-->
+    <div class="inner">
+        <!--p1記分板-->
+        <div id="p1" class="pointboard1">
+            <p id="p1text" style="color:white; text-align:center;font-size:40px;background-color:orange;">
+                player1
+            </p>
+            <p id="p1ptext" style="text-align:center; font-size:60px; color:crimson;">
+                0
+            </p>
+        </div>
+
+        <!--骰子點數介面-->
+        <div id="dicepoint" class="dicepoint" hidden>
+            <button class="yes" id="yes">確定</button>
+            <p class="pointtext" id="pointtext">
+            </p>
+        </div>
+
+        <!--p2記分板-->
+        <div id="p2" class="pointboard2">
+            <p id="p2text" style="color:white; text-align:center;font-size:40px;background-color:gray;">
+                player2
+            </p>
+            <p id="p2ptext" style="text-align:center; font-size:60px; color:crimson;">
+                0
+            </p>
+        </div>
+    </div>
+
+    <!--故事背景介面-->
+    <div id="storytext" class="gamerules" hidden>
+        <button class="close_gamerules" id="close_storytext"><i class="far fa-times-circle"></i></button>
+        <p class="gamerulestext">
+            雯雯和芊芊意外落入了魔法世界。在這裡，只有一個人能夠得到至高無上的法力，因此他們希望透過贏得比賽來決定最佳人選。
+            <br>結合了運氣與智力，究竟誰才能得到夢寐以求的魔法呢！
+        </p>
+    </div>
+
+    <!--命運介面-->
+    <div id="fate" hidden>
+        <button class="yes" id="fate_yes">確定</button>
+        <p style="color:white; text-align:center;font-size:40px;">你的命運是</p>
+        <p class="res" id="fatetext">
+        </p>
+    </div>
+
+    <!--機會介面-->
+    <div id="chance" hidden>
+        <button class="yes" id="chance_yes">確定</button>
+        <p style="color:white; text-align:center;font-size:40px;">你的機會是</p>
+        <p class="res" id="chancetext">
+        </p>
+    </div>
+
+    <!--商店介面-->
+    <div id="store" hidden>
+        <button class="close" id="store_close">離開</button>
+        <button class="tool1" id="tool1">冷凍魔法</button>
+        <button class="tool2" id="tool2">轉移藥水</button>
+        <button class="tool3" id="tool3">double double</button>
+        <p style="color:white; text-align:center;font-size:40px; margin:150px auto;">
+            歡迎光臨魔法商店
+            <br />商店正在維修˙˙˙
+        </p>
+    </div>
+
+    <!--接球-->
+    <div id="ballgame" hidden>
+        <button id="box"></button>
+    </div>
+
+    <!--接球獲得的分數-->
+    <div id="ballgame" hidden>
+        <button id="box"></button>
+    </div>
+    <div id="score" style="color:white; text-align:center;font-size:80px; " hidden>
+        <p style="color:white; text-align:center;font-size:60px; margin:150px;">被你抓到球球了!<br>給你五分啦!</p>
+    </div>
+
+    <!--99-->
+    <div id="times" hidden>
+        <p id="timestext" style="color:white; text-align:center;font-size:60px; margin:150px;">1x3=?</p>
+        <input type="text" id="inputanswer" placeholder="請輸入答案" style="width:790px; height:60px; font-size:35px" />
+    </div>
+
+    <!--背景音樂-->
+    <audio autoplay loop id="backgroundmusic" preload="auto">
+        <source src="backgroundmusic.mp3" type="audio/mp3">
+    </audio>
+
+    <a href="https://cherry880807.github.io/Webprogramming/WPfinalproject.pptx"><i class="fas fa-grin-tongue-wink" style="font-size:45px; margin:0% 0px 0px 50%;color:red;"></i></a>
+    
+
+</body>
+</html>
+
